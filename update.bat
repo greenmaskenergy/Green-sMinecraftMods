@@ -4,7 +4,6 @@
 cls
 set /a progress=0
 
-
 echo checking for files!
 echo downloading ModListFile
 bitsadmin.exe /transfer "|||||  ModListFile (file: mods) ||||||" /priority FOREGROUND https://github.com/greenmaskenergy/Green-sMinecraftMods/raw/master/mods %cd%\mods
@@ -20,7 +19,7 @@ for /F "tokens=*" %%A in (%cd%\mods) do (
 
 if not exist %cd%\%%A (
     echo missing: %%A
-    bitsadmin.exe /transfer "|||||  Mod:  %%A  || !progress! / !ModCount! ||||||"  /priority FOREGROUND https://github.com/greenmaskenergy/Green-sMinecraftMods/raw/master/%%A %cd%\%%A
+    bitsadmin.exe /transfer "|||||  Mod !progress! / !ModCount!:  %%A ||||||"  /priority FOREGROUND https://github.com/greenmaskenergy/Green-sMinecraftMods/raw/master/%%A %cd%\%%A
 ) else (
     cls
     echo skipped mod: %%A already exists
